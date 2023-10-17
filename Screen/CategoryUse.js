@@ -8,6 +8,39 @@ const CategoryUse = () => {
     const [tabDefault, setTabDefault] = useState(1)
     const [selectedTabChiTieu, setSelectedTabChiTieu] = useState(0);
     const [selectedTabThuNhap, setSelectedTabThuNhap] = useState(0);
+
+    const expenseCategories = [
+        {
+            id: 1,
+            name: 'Thực phẩm',
+        },
+        {
+            id: 2,
+            name: 'Đi lại',
+        },
+        {
+            id: 3,
+            name: 'Nhà cửa',
+        },
+        {
+            id: 4,
+            name: 'Giải trí',
+        },
+        {
+            id: 5,
+            name: 'Sức khỏe',
+        },
+        {
+            id: 6,
+            name: 'Học tập',
+        },
+        {
+            id: 7,
+            name: 'Du lịch',
+        },
+        // Thêm các danh mục khác tại đây
+    ];
+
     return (
         <View style={{ flex: 1, backgroundColor: 'white' }}>
             <View
@@ -70,137 +103,48 @@ const CategoryUse = () => {
                 </TouchableOpacity>
             </View>
             {(selectedTabChiTieu == 0 && tabDefault == 0) ? null : (
-                <ScrollView style={{ marginStart: 15, marginEnd: 15, flexDirection: 'column' }}>
-                    <View style={{ flexDirection: 'row', borderBottomWidth: 1, borderColor: 'grey', marginTop: 10 }}>
-                        <View>
-                            <Text style={{ color: 'black' }}>Ăn Uống</Text>
-                        </View>
-                        <View style={{ flex: 1 }} ></View>
-                        <View>
-                            <Text style={{ color: 'black', marginEnd: 10 }}>Sửa</Text>
-                        </View>
-                        <View>
-                            <Text style={{ color: 'black' }}>Xóa</Text>
-                        </View>
-                    </View>
-                    <View style={{ flexDirection: 'row', borderBottomWidth: 1, borderColor: 'grey', marginTop: 10 }}>
-                        <View>
-                            <Text style={{ color: 'black' }}>Quần Áo</Text>
-                        </View>
-                        <View style={{ flex: 1 }} ></View>
-                        <View>
-                            <Text style={{ color: 'black', marginEnd: 10 }}>Sửa</Text>
-                        </View>
-                        <View>
-                            <Text style={{ color: 'black' }}>Xóa</Text>
-                        </View>
-                    </View>
-                    <View style={{ flexDirection: 'row', borderBottomWidth: 1, borderColor: 'grey', marginTop: 10 }}>
-                        <View>
-                            <Text style={{ color: 'black' }}>Đi lại</Text>
-                        </View>
-                        <View style={{ flex: 1 }} ></View>
-                        <View>
-                            <Text style={{ color: 'black', marginEnd: 10 }}>Sửa</Text>
-                        </View>
-                        <View>
-                            <Text style={{ color: 'black' }}>Xóa</Text>
-                        </View>
-                    </View>
-                    <View style={{ flexDirection: 'row', borderBottomWidth: 1, borderColor: 'grey', marginTop: 10 }}>
-                        <View>
-                            <Text style={{ color: 'black' }}>Thuế</Text>
-                        </View>
-                        <View style={{ flex: 1 }} ></View>
-                        <View>
-                            <Text style={{ color: 'black', marginEnd: 10 }}>Sửa</Text>
-                        </View>
-                        <View>
-                            <Text style={{ color: 'black' }}>Xóa</Text>
-                        </View>
-                    </View>
-                    <View style={{ flexDirection: 'row', borderBottomWidth: 1, borderColor: 'grey', marginTop: 10 }}>
-                        <View>
-                            <Text style={{ color: 'black' }}>Khác</Text>
-                        </View>
-                        <View style={{ flex: 1 }} ></View>
-                        <View>
-                            <Text style={{ color: 'black', marginEnd: 10 }}>Sửa</Text>
-                        </View>
-                        <View>
-                            <Text style={{ color: 'black' }}>Xóa</Text>
-                        </View>
-                    </View>
-                </ScrollView>
-
+                <FlatList
+                    style={{ marginStart: 15, marginEnd: 15, flexDirection: 'column' }}
+                    data={expenseCategories}
+                    renderItem={({ item, index }) => {
+                        return (
+                            <View style={{ flexDirection: 'row', borderBottomWidth: 1, borderColor: 'grey', marginTop: 10 }}>
+                                <View><Text style={{ color: 'black' }}>{item.id}.</Text></View>
+                                <View><Text style={{ color: 'black', marginStart: 10 }}>{item.name}</Text></View>
+                                <View style={{ flex: 1 }} ></View>
+                                <View><Text style={{ color: 'black', marginEnd: 10 }}>Sửa</Text></View>
+                                <View><Text style={{ color: 'black' }}>Xóa</Text></View>
+                            </View>
+                        );
+                    }}
+                />
             )}
             {selectedTabThuNhap == 0 ? null : (
-                <ScrollView style={{ marginStart: 15, marginEnd: 15, flexDirection: 'column' }}>
-                    <View style={{ flexDirection: 'row', borderBottomWidth: 1, borderColor: 'grey', marginTop: 10 }}>
-                        <View>
-                            <Text style={{ color: 'black' }}>Lãi Thu Nợ</Text>
-                        </View>
-                        <View style={{ flex: 1 }} ></View>
-                        <View>
-                            <Text style={{ color: 'black', marginEnd: 10 }}>Sửa</Text>
-                        </View>
-                        <View>
-                            <Text style={{ color: 'black' }}>Xóa</Text>
-                        </View>
-                    </View>
-                    <View style={{ flexDirection: 'row', borderBottomWidth: 1, borderColor: 'grey', marginTop: 10 }}>
-                        <View>
-                            <Text style={{ color: 'black' }}>Lãi Ngân Hàng</Text>
-                        </View>
-                        <View style={{ flex: 1 }} ></View>
-                        <View>
-                            <Text style={{ color: 'black', marginEnd: 10 }}>Sửa</Text>
-                        </View>
-                        <View>
-                            <Text style={{ color: 'black' }}>Xóa</Text>
-                        </View>
-                    </View>
-                    <View style={{ flexDirection: 'row', borderBottomWidth: 1, borderColor: 'grey', marginTop: 10 }}>
-                        <View>
-                            <Text style={{ color: 'black' }}>Bán quần áo</Text>
-                        </View>
-                        <View style={{ flex: 1 }} ></View>
-                        <View>
-                            <Text style={{ color: 'black', marginEnd: 10 }}>Sửa</Text>
-                        </View>
-                        <View>
-                            <Text style={{ color: 'black' }}>Xóa</Text>
-                        </View>
-                    </View>
-                    <View style={{ flexDirection: 'row', borderBottomWidth: 1, borderColor: 'grey', marginTop: 10 }}>
-                        <View>
-                            <Text style={{ color: 'black' }}>Đánh bài</Text>
-                        </View>
-                        <View style={{ flex: 1 }} ></View>
-                        <View>
-                            <Text style={{ color: 'black', marginEnd: 10 }}>Sửa</Text>
-                        </View>
-                        <View>
-                            <Text style={{ color: 'black' }}>Xóa</Text>
-                        </View>
-                    </View>
-                    <View style={{ flexDirection: 'row', borderBottomWidth: 1, borderColor: 'grey', marginTop: 10 }}>
-                        <View>
-                            <Text style={{ color: 'black' }}>Khác</Text>
-                        </View>
-                        <View style={{ flex: 1 }} ></View>
-                        <View>
-                            <Text style={{ color: 'black', marginEnd: 10 }}>Sửa</Text>
-                        </View>
-                        <View>
-                            <Text style={{ color: 'black' }}>Xóa</Text>
-                        </View>
-                    </View>
-                </ScrollView>
+                <FlatList
+                    style={{ marginStart: 15, marginEnd: 15, flexDirection: 'column' }}
+                    data={expenseCategories}
+                    renderItem={({ item, index }) => {
+                        return (
+                            <View style={{ flexDirection: 'row', borderBottomWidth: 1, borderColor: 'grey', marginTop: 10 }}>
+                                <View><Text style={{ color: 'black' }}>{item.id}.</Text></View>
+                                <View><Text style={{ color: 'black', marginStart: 10 }}>{item.name}</Text></View>
+                                <View style={{ flex: 1 }} ></View>
+                                <View><Text style={{ color: 'black', marginEnd: 10 }}>Sửa</Text></View>
+                                <View><Text style={{ color: 'black' }}>Xóa</Text></View>
+                            </View>
+                        );
+                    }}
+                />
             )}
-            <View style={{borderStyle:"solid", borderWidth:1, backgroundColor:'aqua'}}>
-                <Text style={{color:'black', fontSize:30, fontWeight:'bold', textAlign:'center'}}>+</Text>
-            </View>
+            <TouchableOpacity 
+                onPress={() => {
+                    Alert.alert("Thêm Danh Mục")
+                }}>
+                <View style={{ borderStyle: "solid", borderWidth: 1, backgroundColor: 'aqua' }}>
+                    <Text style={{ color: 'black', fontSize: 30, fontWeight: 'bold', textAlign: 'center' }}>+</Text>
+                </View>
+            </TouchableOpacity>
+
         </View>
     );
 };

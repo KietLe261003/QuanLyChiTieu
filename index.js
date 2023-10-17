@@ -9,5 +9,6 @@ import LotsOfStyles from './View/index'
 import { Login } from './View/Login';
 import Cards from './View/Cards';
 import CategoryUse from './Screen/CategoryUse';
+import AddNote from './Screen/AddNote';
 
-AppRegistry.registerComponent(appName, () => CategoryUse);
+AppRegistry.registerComponent(appName, () => AddNote);
